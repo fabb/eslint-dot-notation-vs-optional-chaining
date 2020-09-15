@@ -1,0 +1,205 @@
+module.exports = {
+    root: true,
+    env: {
+        browser: true,
+        es6: true,
+        node: true,
+        'jest/globals': true,
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        // not enabling @typescript-eslint/recommended-requiring-type-checking since it is very slow
+        // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:react/recommended',
+        'prettier',
+        'prettier/@typescript-eslint',
+        'prettier/react',
+        'plugin:testing-library/react',
+        // 'plugin:jsx-a11y/recommended',
+    ],
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+        project: 'tsconfig.eslint.json',
+        sourceType: 'module',
+    },
+    plugins: [
+        '@typescript-eslint',
+        '@typescript-eslint/tslint',
+        'react',
+        'react-hooks',
+        'jest',
+        'testing-library',
+        'import',
+        'prefer-arrow',
+        // 'jsx-a11y'
+    ],
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
+    rules: {
+        '@typescript-eslint/adjacent-overload-signatures': 'error',
+        '@typescript-eslint/array-type': 'off', // we could turn this on later
+        '@typescript-eslint/ban-types': [
+            'error',
+            {
+                types: {
+                    '{}': false,
+                },
+                extendDefaults: true,
+            },
+        ],
+        '@typescript-eslint/naming-convention': ['error', { selector: 'class', format: ['PascalCase'] }],
+        '@typescript-eslint/explicit-member-accessibility': [
+            'off',
+            {
+                overrides: {
+                    constructors: 'off',
+                },
+            },
+        ],
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'error',
+        '@typescript-eslint/member-ordering': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-inferrable-types': 'off',
+        '@typescript-eslint/no-misused-new': 'error',
+        '@typescript-eslint/no-namespace': 'error',
+        '@typescript-eslint/no-parameter-properties': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-this-alias': 'error',
+        '@typescript-eslint/no-use-before-declare': 'off',
+        '@typescript-eslint/no-var-requires': 'error',
+        '@typescript-eslint/prefer-for-of': 'error',
+        '@typescript-eslint/prefer-function-type': 'error',
+        '@typescript-eslint/prefer-interface': 'off',
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/triple-slash-reference': 'error',
+        '@typescript-eslint/unified-signatures': 'error',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            // needs to be turned off unfortunately because it causes false-positives with JSX usage
+            'error',
+            {
+                vars: 'all',
+                args: 'after-used',
+                ignoreRestSiblings: false,
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+            },
+        ],
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/typedef': [
+            'error',
+            {
+                arrowParameter: false,
+                memberVariableDeclaration: false,
+            },
+        ],
+        '@typescript-eslint/prefer-as-const': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
+        // @typescript-eslint/prefer-nullish-coalescing could be unwanted in many cases, therefore we rather disable it explicitly
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+        'react/jsx-uses-vars': 'error',
+        'react/jsx-uses-react': 'error',
+        'react/jsx-boolean-value': ['error', 'always'],
+        'react/jsx-key': 'error',
+        'react/jsx-no-bind': [
+            'error',
+            {
+                allowArrowFunctions: true,
+            },
+        ],
+        'react/no-string-refs': ['error', { noTemplateLiterals: true }],
+        'react/self-closing-comp': [
+            'error',
+            {
+                component: true,
+                html: true,
+            },
+        ],
+        'react/prop-types': 'off',
+        'react/no-children-prop': 'off',
+        'react/no-unescaped-entities': 'off',
+        'react/display-name': 'off',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
+        'testing-library/no-manual-cleanup': 'error',
+        'testing-library/no-wait-for-empty-callback': 'error',
+        'testing-library/prefer-explicit-assert': 'error',
+        'testing-library/prefer-presence-queries': 'error',
+        'testing-library/prefer-wait-for': 'error',
+        'import/no-default-export': 'error',
+        'import/no-unassigned-import': 'error',
+        'no-restricted-imports': ['error', { patterns: ['**/*.css'] }],
+
+        'prefer-arrow/prefer-arrow-functions': [
+            'error',
+            {
+                disallowPrototype: false,
+                singleReturnOnly: true,
+                classPropertiesAllowed: false,
+            },
+        ],
+        complexity: 'off',
+        'constructor-super': 'error',
+        curly: 'error',
+        'dot-notation': 'error',
+        eqeqeq: 'error',
+        'guard-for-in': 'error',
+        'max-classes-per-file': ['error', 1],
+        'max-lines': ['error', 400],
+        'no-bitwise': 'error',
+        'no-caller': 'error',
+        'no-cond-assign': 'error',
+        'no-console': [
+            'error',
+            {
+                allow: ['warn', 'error', 'info', 'log', 'debug'],
+            },
+        ],
+        'no-debugger': 'error',
+        'no-empty': 'off',
+        'no-empty-function': 'off',
+        'no-eval': 'error',
+        'no-fallthrough': 'off',
+        'no-invalid-this': 'off', // cannot use because it causes false-positives in class arrow functions, because eslint does not yet support stage 3 features https://github.com/typescript-eslint/typescript-eslint/issues/491
+        'no-irregular-whitespace': 'off',
+        'no-new-wrappers': 'error',
+        'no-throw-literal': 'error',
+        'no-undef-init': 'error',
+        'no-unsafe-finally': 'error',
+        'no-unused-labels': 'error',
+        'no-unused-expressions': 'off',
+        'no-var': 'error',
+        'object-shorthand': 'off',
+        'one-var': 'off',
+        'prefer-const': 'error',
+        'prefer-template': 'error',
+        radix: 'error',
+        'spaced-comment': ['error', 'always', { markers: ['/'] }],
+        'use-isnan': 'error',
+        'valid-typeof': 'off',
+        // INFO tslint is still used for rules that are not yet migrated to the typescript-eslint plugin
+        // roadmap see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/ROADMAP.md
+        '@typescript-eslint/tslint/config': [
+            'error',
+            {
+                rules: {
+                    'no-reference-import': true,
+                    'no-unsafe-any': true,
+                },
+            },
+        ],
+    },
+}

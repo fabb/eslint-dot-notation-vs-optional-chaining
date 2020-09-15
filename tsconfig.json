@@ -1,0 +1,17 @@
+/* note that next.js currently cannot be configured to use another file than tsconfig.json, therefore we cannot rename it */
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "jsx": "preserve",
+        "lib": [
+            "dom",
+            "es2015",
+            "es2016.array.include"
+            /* this is set to a low target lib on purpose, because we do not polyfill modern browsers (only old ones like IE11) - only use modern api after checking if it's safe for the browsers we support */
+        ],
+        "module": "esnext",
+        "noEmit": true
+    },
+    "exclude": ["node_modules/**/*"],
+    "include": ["**/*.ts", "**/*.tsx"]
+}
